@@ -3,9 +3,9 @@
 namespace alexeevdv\slack\mailer;
 
 use Maknz\Slack\Client as SlackClient;
+use Maknz\Slack\Message;
 use Yii;
 use yii\base\InvalidConfigException;
-use yii\helpers\ArrayHelper;
 use yii\mail\BaseMailer;
 
 /**
@@ -53,7 +53,7 @@ class SlackMailer extends BaseMailer
     /**
      * @var bool
      */
-    public $unfurl_links = false;
+    public $unfurl_links = true;
 
     /**
      * @var bool
@@ -69,8 +69,13 @@ class SlackMailer extends BaseMailer
      * @var array
      */
     public $attachmentOptions = [
-        'color' => 'danger',
+        'color' => 'info',
     ];
+
+    /**
+     * @var SlackClient
+     */
+    private $_client;
 
     /**
      * @inheritdoc
@@ -89,13 +94,18 @@ class SlackMailer extends BaseMailer
      */
     protected function sendMessage($message)
     {
-        $attachment = ArrayHelper::merge(
-            $this->attachmentOptions,
-            [
-                'text' => $message->toString(),
-            ]
-        );
-        $this->getSlackClient()->attach($attachment)->send();
+        $payload = $this->getSlackClient()->createMessage();
+
+        $this->attachSubject($payload, $message);
+        $this->attachFrom($payload, $message);
+        $this->attachTo($payload, $message);
+
+        $payload->attach([
+            'text' => $message->toString(),
+            'color' => strlen($message->toString()) ? 'good' : 'danger',
+        ]);
+
+        $payload->send();
     }
 
     /**
@@ -126,5 +136,43 @@ class SlackMailer extends BaseMailer
         return array_filter($options, function ($option) {
             return !is_null($option);
         });
+    }
+
+    /**
+     * @param Message $payload
+     * @param SlackMessage $mesage
+     */
+    private function attachSubject(Message $payload, SlackMessage $message)
+    {
+        $payload->attach([
+            'text' => 'Subject: ' . $message->getSubject(),
+            'color' => strlen($message->getSubject()) ? 'good' : 'danger',
+        ]);
+    }
+
+    /**
+     * @param Message $payload
+     * @param SlackMessage $message
+     */
+    private function attachFrom(Message $payload, SlackMessage $message)
+    {
+        $from = $message->getFrom();
+        $payload->attach([
+            'text' => 'From: ' . (is_array($from) ? reset($from) . ' <' . key($from) . '>' : $from),
+            'color' => $from ? 'good' : 'danger',
+        ]);
+    }
+
+    /**
+     * @param Message $payload
+     * @param SlackMessage $message
+     */
+    private function attachTo(Message $payload, SlackMessage $message)
+    {
+        $to = $message->getTo();
+        $payload->attach([
+            'text' => 'To: ' . (is_array($to) ? reset($to) . ' <' . key($to) . '>' : $to),
+            'color' => $to ? 'good' : 'danger',
+        ]);
     }
 }

@@ -3,7 +3,6 @@
 namespace alexeevdv\slack\mailer;
 
 use yii\mail\BaseMessage;
-use yii\mail\MessageInterface;
 
 /**
  * Class SlackMessage
@@ -232,6 +231,6 @@ class SlackMessage extends BaseMessage
      */
     public function toString()
     {
-        return $this->_textBody;
+        return $this->_htmlBody;
     }
 }
