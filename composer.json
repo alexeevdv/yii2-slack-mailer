@@ -1,0 +1,30 @@
+{
+    "name": "alexeevdv/yii2-slack-mailer",
+    "type": "yii2-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Alekseev",
+            "email": "mail@alexeevdv.ru"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "alexeevdv\\slack\\mailer\\": "src"
+        }
+    },
+    "require": {
+        "yiisoft/yii2": "2.0.13.1",
+        "maknz/slack": "^1.7"
+    },
+    "require-dev": {
+        "yiisoft/yii2-coding-standards": "^2.0",
+        "codeception/codeception": "^2.3"
+    }
+}
