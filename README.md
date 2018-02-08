@@ -31,11 +31,11 @@ to the ```require``` section of your `composer.json` file.
 use alexeevdv\slack\mailer\SlackMailer;
 
 //...
-"components" => [
+'components' => [
     //...
-    "mailer" => [
-        "class" => SlackMailer::class,
-        "webhook" => "https://your_webhook_link",
+    'mailer' => [
+        'class' => SlackMailer::class,
+        'webhook' => 'https://your_webhook_link',
     ],
     //...
 ],
