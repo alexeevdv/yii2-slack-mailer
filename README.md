@@ -3,6 +3,9 @@ yii2-slack-mailer
 
 Yii2 mailer implementation that send mails to specified webhook.
 
+![Preview](https://raw.githubusercontent.com/alexeevdv/yii2-slack-mailer/master/preview.jpg)
+
+
 ## Installation
 
 The preferred way to install this extension is through [composer](https://getcomposer.org/download/).
