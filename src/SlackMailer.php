@@ -66,13 +66,6 @@ class SlackMailer extends BaseMailer
     public $allow_markdown = true;
 
     /**
-     * @var array
-     */
-    public $attachmentOptions = [
-        'color' => 'info',
-    ];
-
-    /**
      * @var SlackClient
      */
     private $_client;
