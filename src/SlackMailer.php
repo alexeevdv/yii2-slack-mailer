@@ -99,6 +99,7 @@ class SlackMailer extends BaseMailer
         ]);
 
         $payload->send();
+        return true;
     }
 
     /**
