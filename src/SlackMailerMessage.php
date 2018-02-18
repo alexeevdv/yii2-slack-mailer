@@ -5,10 +5,10 @@ namespace alexeevdv\slack\mailer;
 use yii\mail\BaseMessage;
 
 /**
- * Class SlackMessage
+ * Class SlackMailerMessage
  * @package alexeevdv\slack\mailer
  */
-class SlackMessage extends BaseMessage
+class SlackMailerMessage extends BaseMessage
 {
     /**
      * @var string
@@ -216,6 +216,7 @@ class SlackMessage extends BaseMessage
     public function embed($fileName, array $options = [])
     {
         // TODO: Implement embed() method.
+        return uniqid();
     }
 
     /**
@@ -224,6 +225,7 @@ class SlackMessage extends BaseMessage
     public function embedContent($content, array $options = [])
     {
         // TODO: Implement embedContent() method.
+        return uniqid();
     }
 
     /**
@@ -231,6 +233,18 @@ class SlackMessage extends BaseMessage
      */
     public function toString()
     {
-        return $this->_htmlBody;
+        $string = '';
+        if ($this->_textBody !== null) {
+            $string .= $this->_textBody;
+        }
+
+        if ($this->_htmlBody !== null) {
+            if ($this->_textBody !== null) {
+                $string .= PHP_EOL;
+            }
+            $string .= $this->_htmlBody;
+        }
+
+        return $string;
     }
 }

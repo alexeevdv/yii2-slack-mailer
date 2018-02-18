@@ -17,7 +17,7 @@ class SlackMailer extends BaseMailer
     /**
      * @inheritdoc
      */
-    public $messageClass = SlackMessage::class;
+    public $messageClass = SlackMailerMessage::class;
 
     /**
      * @inheritdoc
@@ -98,7 +98,11 @@ class SlackMailer extends BaseMailer
             'color' => strlen($message->toString()) ? 'good' : 'danger',
         ]);
 
-        $payload->send();
+        try {
+            $payload->send();
+        } catch (\GuzzleHttp\Exception\GuzzleException $e) {
+            return false;
+        }
         return true;
     }
 
@@ -134,9 +138,9 @@ class SlackMailer extends BaseMailer
 
     /**
      * @param Message $payload
-     * @param SlackMessage $mesage
+     * @param SlackMailerMessage $mesage
      */
-    private function attachSubject(Message $payload, SlackMessage $message)
+    private function attachSubject(Message $payload, SlackMailerMessage $message)
     {
         $payload->attach([
             'text' => 'Subject: ' . $message->getSubject(),
@@ -146,9 +150,9 @@ class SlackMailer extends BaseMailer
 
     /**
      * @param Message $payload
-     * @param SlackMessage $message
+     * @param SlackMailerMessage $message
      */
-    private function attachFrom(Message $payload, SlackMessage $message)
+    private function attachFrom(Message $payload, SlackMailerMessage $message)
     {
         $from = $message->getFrom();
         $payload->attach([
@@ -159,9 +163,9 @@ class SlackMailer extends BaseMailer
 
     /**
      * @param Message $payload
-     * @param SlackMessage $message
+     * @param SlackMailerMessage $message
      */
-    private function attachTo(Message $payload, SlackMessage $message)
+    private function attachTo(Message $payload, SlackMailerMessage $message)
     {
         $to = $message->getTo();
         $payload->attach([

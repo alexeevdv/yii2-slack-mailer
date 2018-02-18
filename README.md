@@ -28,7 +28,7 @@ to the ```require``` section of your `composer.json` file.
 
 ### Through application component
 ```php
-use alexeevdv\slack\mailer\SlackMailer;
+use alexeevdv\slack\SlackMailer;
 
 //...
 'components' => [
