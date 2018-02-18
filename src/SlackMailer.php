@@ -1,6 +1,6 @@
 <?php
 
-namespace alexeevdv\slack\mailer;
+namespace alexeevdv\slack;
 
 use Maknz\Slack\Client as SlackClient;
 use Maknz\Slack\Message;

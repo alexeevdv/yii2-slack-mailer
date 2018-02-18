@@ -1,6 +1,6 @@
 <?php
 
-namespace alexeevdv\slack\mailer;
+namespace alexeevdv\slack;
 
 use yii\mail\BaseMessage;
 

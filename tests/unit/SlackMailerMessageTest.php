@@ -2,7 +2,7 @@
 
 namespace tests\unit;
 
-use alexeevdv\slack\mailer\SlackMailerMessage;
+use alexeevdv\slack\SlackMailerMessage;
 
 /**
  * Class SlackMailerMessageTest
