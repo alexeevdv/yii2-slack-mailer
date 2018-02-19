@@ -16,11 +16,11 @@
     ],
     "autoload": {
         "psr-4": {
-            "alexeevdv\\slack\\": "src"
+            "alexeevdv\\mailer\\": "src"
         }
     },
     "require": {
-        "yiisoft/yii2": "2.0.13.1",
+        "yiisoft/yii2": "^2.0",
         "maknz/slack": "^1.7"
     },
     "require-dev": {
