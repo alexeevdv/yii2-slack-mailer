@@ -245,7 +245,7 @@ class SlackMailerMessageTest extends \Codeception\Test\Unit
     /**
      * @test
      */
-    public function toString()
+    public function testToString()
     {
         $message = new SlackMailerMessage;
         $this->tester->assertEquals(
