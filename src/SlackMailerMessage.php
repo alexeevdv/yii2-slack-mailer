@@ -1,12 +1,12 @@
 <?php
 
-namespace alexeevdv\mailer;
+namespace alexeevdv\yii;
 
 use yii\mail\BaseMessage;
 
 /**
  * Class SlackMailerMessage
- * @package alexeevdv\mailer
+ * @package alexeevdv\yii
  */
 class SlackMailerMessage extends BaseMessage
 {

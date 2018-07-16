@@ -2,8 +2,8 @@
 
 namespace tests\unit;
 
-use alexeevdv\mailer\SlackMailer;
-use alexeevdv\mailer\SlackMailerMessage;
+use alexeevdv\yii\SlackMailer;
+use alexeevdv\yii\SlackMailerMessage;
 use Codeception\Stub;
 use Yii;
 use yii\base\InvalidConfigException;

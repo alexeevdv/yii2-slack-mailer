@@ -1,6 +1,6 @@
 <?php
 
-namespace alexeevdv\mailer;
+namespace alexeevdv\yii;
 
 use Maknz\Slack\Client as SlackClient;
 use Maknz\Slack\Message;
@@ -10,7 +10,7 @@ use yii\mail\BaseMailer;
 
 /**
  * Class SlackMailer
- * @package alexeevdv\mailer
+ * @package alexeevdv\yii
  */
 class SlackMailer extends BaseMailer
 {

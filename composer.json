@@ -16,15 +16,15 @@
     ],
     "autoload": {
         "psr-4": {
-            "alexeevdv\\mailer\\": "src"
+            "alexeevdv\\yii\\": "src"
         }
     },
     "require": {
-        "yiisoft/yii2": "^2.0",
-        "maknz/slack": "^1.7"
+        "yiisoft/yii2": "~2.0",
+        "maknz/slack": "~1.7"
     },
     "require-dev": {
-        "yiisoft/yii2-coding-standards": "^2.0",
-        "codeception/codeception": "^2.3"
+        "yiisoft/yii2-coding-standards": "~2.0.0",
+        "codeception/codeception": "~2.4.0"
     }
 }

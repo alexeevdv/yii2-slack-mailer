@@ -19,13 +19,13 @@ The preferred way to install this extension is through [composer](https://getcom
 Either run
 
 ```bash
-$ php composer.phar require alexeevdv/yii2-slack-mailer "~1.0"
+$ php composer.phar require alexeevdv/yii2-slack-mailer "~2.0"
 ```
 
 or add
 
 ```
-"alexeevdv/yii2-slack-mailer": "~1.0"
+"alexeevdv/yii2-slack-mailer": "~2.0"
 ```
 
 to the ```require``` section of your `composer.json` file.
@@ -34,7 +34,7 @@ to the ```require``` section of your `composer.json` file.
 
 ### Through application component
 ```php
-use alexeevdv\mailer\SlackMailer;
+use alexeevdv\yii\SlackMailer;
 
 //...
 'components' => [
